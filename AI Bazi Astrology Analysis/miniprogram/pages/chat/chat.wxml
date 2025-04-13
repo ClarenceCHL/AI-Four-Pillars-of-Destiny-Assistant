@@ -1,0 +1,43 @@
+<view class="chat-container">
+  <scroll-view 
+    class="message-list" 
+    scroll-y 
+    scroll-into-view="{{scrollToMessage}}"
+    scroll-with-animation>
+    <block wx:for="{{messages}}" wx:key="index">
+      <view class="message {{item.role}}-message">
+        <view class="message-content">{{item.content}}</view>
+      </view>
+    </block>
+    
+    <!-- 加载状态 -->
+    <view class="message assistant-message" wx:if="{{isLoading}}">
+      <view class="message-content loading">
+        <text class="dot"></text>
+        <text class="dot"></text>
+        <text class="dot"></text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 错误消息 -->
+  <view class="error-message" wx:if="{{errorMessage}}">
+    <text>{{errorMessage}}</text>
+    <button class="retry-btn" bindtap="retry">重试</button>
+  </view>
+
+  <view class="input-container">
+    <input 
+      class="message-input" 
+      value="{{inputValue}}"
+      placeholder="请输入消息" 
+      bindinput="onInput"
+      disabled="{{isLoading}}"
+    />
+    <button 
+      class="send-btn" 
+      bindtap="sendMessage"
+      disabled="{{!inputValue || isLoading}}"
+    >发送</button>
+  </view>
+</view> 

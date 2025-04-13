@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/input/input",
+    "pages/analysis/analysis",
+    "pages/chat/chat"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "合八字的选择让生活更顺心",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+} 

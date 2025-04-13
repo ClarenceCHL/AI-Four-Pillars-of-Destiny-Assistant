@@ -1,0 +1,36 @@
+<view class="container">
+  <view class="title">请输入出生信息</view>
+  
+  <view class="input-group">
+    <view class="label">出生日期</view>
+    <picker mode="date" value="{{date}}" bindchange="onDateChange">
+      <view class="picker {{date ? '' : 'placeholder'}}">
+        {{date || '请选择出生日期'}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="input-group">
+    <view class="label">出生时间</view>
+    <picker mode="time" value="{{time}}" bindchange="onTimeChange">
+      <view class="picker {{time ? '' : 'placeholder'}}">
+        {{time || '请选择出生时间'}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="input-group">
+    <view class="label">出生地点</view>
+    <picker mode="region" value="{{place}}" bindchange="onPlaceChange">
+      <view class="picker {{place ? '' : 'placeholder'}}">
+        {{place || '请选择出生地点'}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="error-message" wx:if="{{errorMessage}}">
+    {{errorMessage}}
+  </view>
+
+  <button class="submit-btn" bindtap="startAnalysis">开始分析</button>
+</view> 

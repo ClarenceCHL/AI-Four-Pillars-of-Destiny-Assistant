@@ -1,0 +1,83 @@
+<view class="container">
+  <view class="title">八字分析结果</view>
+
+  <!-- 错误提示 -->
+  <view class="error-message" wx:if="{{errorMessage}}">
+    {{errorMessage}}
+    <button class="retry-btn" bindtap="retry">重试</button>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{isLoading}}">
+    <view class="dot"></view>
+    <view class="dot"></view>
+    <view class="dot"></view>
+  </view>
+
+  <!-- 八字信息 -->
+  <view class="bazi-info" wx:if="{{!errorMessage && !isLoading && baziInfo}}">
+    <view class="section">
+      <view class="section-title">八字信息</view>
+      <view class="bazi-pillars">
+        <view class="pillar">年柱：{{baziInfo.yearPillar}}</view>
+        <view class="pillar">月柱：{{baziInfo.monthPillar}}</view>
+        <view class="pillar">日柱：{{baziInfo.dayPillar}}</view>
+        <view class="pillar">时柱：{{baziInfo.hourPillar}}</view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">五行强度</view>
+      <view class="wuxing-strength">
+        <view class="strength-item">
+          <text class="strength-label">木</text>
+          <view class="strength-bar">
+            <view class="strength-fill" style="width: {{wuxingStrength.wood * 100}}%"></view>
+          </view>
+        </view>
+        <view class="strength-item">
+          <text class="strength-label">火</text>
+          <view class="strength-bar">
+            <view class="strength-fill" style="width: {{wuxingStrength.fire * 100}}%"></view>
+          </view>
+        </view>
+        <view class="strength-item">
+          <text class="strength-label">土</text>
+          <view class="strength-bar">
+            <view class="strength-fill" style="width: {{wuxingStrength.earth * 100}}%"></view>
+          </view>
+        </view>
+        <view class="strength-item">
+          <text class="strength-label">金</text>
+          <view class="strength-bar">
+            <view class="strength-fill" style="width: {{wuxingStrength.metal * 100}}%"></view>
+          </view>
+        </view>
+        <view class="strength-item">
+          <text class="strength-label">水</text>
+          <view class="strength-bar">
+            <view class="strength-fill" style="width: {{wuxingStrength.water * 100}}%"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">分析结果</view>
+      <view class="analysis-content">
+        <view wx:if="{{isAnalyzing}}" class="analyzing">
+          <view class="dot"></view>
+          <view class="dot"></view>
+          <view class="dot"></view>
+          <text>AI正在生成分析结果</text>
+        </view>
+        <view wx:else>{{baziInfo.analysis}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 开始个性化咨询按钮 -->
+  <button class="consult-btn" bindtap="startPersonalizedConsultation" disabled="{{!!errorMessage || isLoading}}">
+    开始个性化咨询
+  </button>
+</view> 

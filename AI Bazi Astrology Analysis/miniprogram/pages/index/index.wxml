@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="header">
+    <text class="title">八字分析助手</text>
+    <text class="subtitle">专业的八字分析与个性化建议</text>
+  </view>
+  
+  <view class="form-container">
+    <view class="form-item">
+      <text class="label">出生日期</text>
+      <picker mode="date" value="{{birthDate}}" start="1900-01-01" end="2024-12-31" bindchange="onBirthDateChange">
+        <view class="picker">{{birthDate || '请选择出生日期'}}</view>
+      </picker>
+    </view>
+    
+    <view class="form-item">
+      <text class="label">出生时间</text>
+      <picker mode="time" value="{{birthTime}}" bindchange="onBirthTimeChange">
+        <view class="picker">{{birthTime || '请选择出生时间'}}</view>
+      </picker>
+    </view>
+    
+    <view class="form-item">
+      <text class="label">出生地点</text>
+      <input type="text" placeholder="请输入出生地点" value="{{birthPlace}}" bindinput="onBirthPlaceInput"/>
+    </view>
+    
+    <button class="submit-btn" type="primary" bindtap="onSubmit">开始分析</button>
+  </view>
+</view> 
